@@ -11,17 +11,18 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import {OpenInBrowser} from "@material-ui/icons";
 
 type JobListingProps ={
-     jobsQuery?: string ;
+     searchQuery?: string ;
 }
 
-const JobListing = ({jobsQuery=''}: JobListingProps)=>{
+const JobListing = ({searchQuery=''}: JobListingProps)=>{
     const URL = '/positions.json';
-    const [page, setPage] = React.useState(0);
-    const [loading, setLoading] = React.useState(true);
-    const [jobs, setJobs] = React.useState([]);
+    const [loading, setLoading] = React.useState<boolean>(true);
+    const [jobs, setJobs] = React.useState<Job[]>([]);
     useEffect(
         ()=>{
-            fetch(`${URL}?title=${jobsQuery}`, {
+            setLoading(true);
+            setJobs([]);
+            fetch(`${URL}?description=${searchQuery}`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': '*'
@@ -29,8 +30,11 @@ const JobListing = ({jobsQuery=''}: JobListingProps)=>{
             }).then(res=>res.json()).then(jobs=>{
                 setJobs(jobs);
                 setLoading(false);
+            }).catch(err =>{
+              alert('Github Jobs API failed to load');
+              console.error(err);
             });
-        },[]);
+        },[searchQuery]);
     return (
         <TableContainer component={Paper}>
             <Table aria-label="simple table">
@@ -40,7 +44,7 @@ const JobListing = ({jobsQuery=''}: JobListingProps)=>{
                         <TableCell align="right">Type</TableCell>
                         <TableCell align="right">Company</TableCell>
                         <TableCell align="right">Location</TableCell>
-                        <TableCell align="right"></TableCell>
+                        <TableCell align="right"/>
                     </TableRow>
                 </TableHead>
                 <TableBody>
