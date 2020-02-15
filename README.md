@@ -5,7 +5,7 @@ Deployed on Netlify: [Demo](https://confident-bohr-358442.netlify.com)
 ## Setup locally
 Before `yarn start` add this to your `.env.local`:
 ```
-REACT_APP_API_URL='/positions.json'
+REACT_APP_API_URL='/api/positions.json'
 ```
 
 ## Development process:
