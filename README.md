@@ -1,6 +1,6 @@
 # Collock demo project
 The exercice is to create a web page using React with a search bar using Github API: https://jobs.github.com/api
-Deployed on Netlify: [Demo](https://confident-bohr-358442.netlify.com)
+
 ---
 ## Setup locally
 Before `yarn start` add this to your `.env.local`:
