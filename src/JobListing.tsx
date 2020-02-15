@@ -15,14 +15,13 @@ type JobListingProps ={
 }
 
 const JobListing = ({searchQuery=''}: JobListingProps)=>{
-    const URL = '/positions.json';
     const [loading, setLoading] = React.useState<boolean>(true);
     const [jobs, setJobs] = React.useState<Job[]>([]);
     useEffect(
         ()=>{
             setLoading(true);
             setJobs([]);
-            fetch(`${URL}?description=${searchQuery}`, {
+            fetch(`${process.env.REACT_APP_API_URL}?description=${searchQuery}`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': '*'
