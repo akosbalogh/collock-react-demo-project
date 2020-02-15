@@ -69,7 +69,7 @@ const App = ()=> {
     return (
         <main>
         <div className={classes.root}>
-            <AppBar position="static">
+            <AppBar position="fixed">
                 <Toolbar>
                     <Typography className={classes.title} variant="h6" noWrap>
                         Collock demo app
