@@ -45,5 +45,6 @@
     "@typescript-eslint/parser": "^2.19.0",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.18.3"
-  }
+  },
+  "proxy": "https://jobs.github.com"
 }
